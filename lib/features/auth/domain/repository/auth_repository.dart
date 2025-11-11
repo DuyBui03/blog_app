@@ -1,15 +1,16 @@
 import 'package:blog_app/core/error/failures.dart';
+import 'package:blog_app/core/common/entities/user.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class AuthRepository {
-  Future<Either<Failure, String>> signUpWithEmailPassword({
+  Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
     required String name,
+  });
+  Future<Either<Failure, User>> loginWithEmailAndPassword({
     required String email,
     required String password,
   });
-
-  Future<Either<Failure, String>> loginWithEmailPassword({
-    required String email,
-    required String password,
-  });
+  Future<Either<Failure, User>>  currentUser();
 }
