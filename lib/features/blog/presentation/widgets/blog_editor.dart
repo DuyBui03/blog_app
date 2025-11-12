@@ -13,8 +13,14 @@ class BlogEditor extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(hintText: hintText, border: InputBorder.none),
+      decoration: InputDecoration(hintText: hintText),
       maxLines: null,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return '$hintText is missing';
+        }
+        return null;
+      },
     );
   }
 }
